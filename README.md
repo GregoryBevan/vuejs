@@ -1,4 +1,4 @@
-# process-rejected-mail
+# Vue js sample project
 
 > A Vue.js project
 
