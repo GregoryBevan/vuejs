@@ -1,14 +1,9 @@
 <template>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Piece</a>
-      </div>
-    </div>
-  </nav>
+  <nav-bar></nav-bar>
 </template>
 
 <script>
+import NavBar from './navbar/NavBar.vue'
 
 export default {
   name: 'app',
@@ -18,6 +13,7 @@ export default {
     }
   },
   components: {
+    NavBar
   }
 }
 </script>
