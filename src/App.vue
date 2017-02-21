@@ -1,9 +1,13 @@
 <template>
-  <nav-bar></nav-bar>
+  <div id="content">
+    <nav-bar></nav-bar>
+    <form-component></form-component>
+  </div>
 </template>
 
 <script>
 import NavBar from './navbar/NavBar.vue'
+import FormComponent from './form/FormComponent.vue'
 
 export default {
   name: 'app',
@@ -13,7 +17,8 @@ export default {
     }
   },
   components: {
-    NavBar
+    NavBar,
+    FormComponent
   }
 }
 </script>
