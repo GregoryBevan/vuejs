@@ -13,7 +13,8 @@ export default {
   data: function() {
     return {
       language: {
-        dictDefaultMessage: '<div>Déposer les pièces jointes</div>'
+        dictDefaultMessage: '<div>Déposer les pièces jointes</div>',
+        dictRemoveFile: 'Supprimer'
       }
     }
   },

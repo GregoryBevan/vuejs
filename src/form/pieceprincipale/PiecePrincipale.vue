@@ -30,12 +30,18 @@ export default {
 </script>
 
 <style lang="scss">
-.btn-primary {
+.btn-primary{
   background-color: #337ab7;
   border-color: #2e6da4;
+  &,
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: #286090;
+    border-color: #204d74;
+  }
+
+
 }
-.btn-primary:hover {
-  background-color: #286090;
-  border-color: #204d74;
-}
+
 </style>
