@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="container">
     <div class="row col-xs-12">
-      <form v-on:submit="submitForm">
+      <form ref="main-form" id="main-form">
         <div class="form-group col-xs-6">
           <label for="societe">Société</label>
           <select id="societe" name="societe" class="form-control">
@@ -33,7 +33,7 @@
       <input type="hidden" name="etat" value="12">
       <div class="form-group col-xs-12">
         <p class=" text-center">
-          <input type="submit" class="btn btn-primary" value="Envoyer">
+          <input type="submit" class="btn btn-primary" value="Envoyer" @click="submitForm">
         </p>
       </div>
     </form>
@@ -43,16 +43,41 @@
 <script>
 import PiecePrincipale from './pieceprincipale/PiecePrincipale.vue'
 import PiecesJointes from './piecesjointes/PiecesJointes.vue'
+import {EventBus} from '../bus.js'
 
 export default {
   name: 'form-component',
+  data() {
+	  return {
+		  piecePrincipaleFile: {}
+	  }
+  },
   components: {
     PiecePrincipale,
     PiecesJointes
   },
+  created() {
+	  EventBus.$on('piecePrincipaleUpdated', function(file) {
+		 console.log(file);
+	})
+  },
   methods: {
     'submitForm': function() {
-      console.log("Soumettre le formula");
+    	var formData = new FormData();
+    	formData.append('file', 'bar');
+    	this.$http.post('api/', formData).then((response) => {
+    		console.log('trop cool');
+    	}, (response) => {
+    		console.log('Putain ça marche pas');
+    	})
+    	this.$http.get('api/').then((response) => {
+            console.log('test')
+        }, (response) => {
+            // error callback
+        });
+    },
+    'piecePrincipaleUpdate': function(file) {
+    	console.log("Update piece principale");
     }
   }
 }

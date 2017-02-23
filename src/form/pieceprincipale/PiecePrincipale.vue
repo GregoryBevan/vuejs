@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import {EventBus} from '../../bus.js'
 
 export default {
   name: 'piece-principale',
@@ -25,7 +26,7 @@ export default {
     setPiecePrincipalePath: function(event) {
       this.file=event.target.files[0];
       this.$refs.piecePrincipale.value=event.target.files[0].name;
-      console.log(this.file);
+      EventBus.$emit('piecePrincipaleUpdated', this.file);
     }
   }
 }
