@@ -22,8 +22,10 @@ export default {
     }
   },
   methods: {
-    setPiecePrincipalePath(event) {
-      this.$refs.piecePrincipale.value=event.srcElement.value;
+    setPiecePrincipalePath: function(event) {
+      this.file=event.target.files[0];
+      this.$refs.piecePrincipale.value=event.target.files[0].name;
+      console.log(this.file);
     }
   }
 }
