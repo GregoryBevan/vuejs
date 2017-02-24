@@ -45,8 +45,13 @@ import {EventBus} from '../bus.js'
 export default {
   name: 'form-component',
   data: () => ({
-    societe: "",
-    domaine: "",
+    societe: '',
+    domaine: '',
+    libelle: 'mail rejeté',
+    typeReception: 7,
+    idCheminRelatif: 147,
+    etat: 12,
+    pieceParente: '',
     piecePrincipaleFile: {}
   }),
   components: {
@@ -65,23 +70,24 @@ export default {
       event.preventDefault();
       console.log(this.piecePrincipaleFile);
       var formData = this.getFormData();
-      this.$http.post('api/', formData).then((response) => {
-        console.log('trop cool');
+      this.$http.post('piece-web-metier/service/piece/entrante', formData).then((response) => {
+        var responseContentLocation = response.headers.get('content-location');
+        var pieceParente = responseContentLocation.substr(responseContentLocation.lastIndexOf('/') + 1);
+        console.log("Pièce parente : " + pieceParente);
       }, (response) => {
-        console.log('Putain ça marche pas');
-      })
-    },
-    'piecePrincipaleUpdate': function(file) {
-      console.log("Update piece principale");
+        console.error('Erreur d\'envoi de la pièce jointe');
+        console.error(response);
+      });
     },
     'getFormData': function() {
       var formData = new FormData();
       formData.append('societe', this.societe);
       formData.append('domaine', this.domaine);
-      formData.append('type-reception', 7);
-      formData.append('idCheminRelatif', 147);
-      formData.append('etat', 12);
-      formData.append('file', this.piecePrincipaleFile, this.piecePrincipaleFile.name);
+      formData.append('libelle', this.libelle);
+      formData.append('type-reception', this.typeReception);
+      formData.append('idCheminRelatif', this.idCheminRelatif);
+      formData.append('etat', this.etat);
+      formData.append('document', this.piecePrincipaleFile, this.piecePrincipaleFile.name);
       return formData;
     }
   }
