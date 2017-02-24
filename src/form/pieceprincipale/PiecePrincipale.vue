@@ -4,7 +4,7 @@
     <div class="input-group">
       <label class="input-group-btn">
         <span class="btn btn-primary">
-          Parcourir&hellip; <input type="file" style="display: none;" @change="setPiecePrincipalePath">
+          Parcourir&hellip; <input type="file" ref="fileAdded" style="display: none;" @change="setPiecePrincipalePath">
         </span>
       </label>
       <input type="text" id="piece-principale" ref="piecePrincipale" class="form-control" readonly>
