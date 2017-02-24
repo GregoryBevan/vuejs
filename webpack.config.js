@@ -57,8 +57,8 @@ module.exports = {
     port: 9080,
     proxy: {
         '/api/**': {
-          target: 'http://localhost:8080',
-          secure: false, 
+          target: 'http://localhost:8180',
+          secure: false,
           changeOrigin:true
         }
       }
