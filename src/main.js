@@ -12,6 +12,5 @@ new Vue({
   render: h => h(App),
   created: () => {
 	  console.log('Initialize application');
-	  console.log(Vue.http);
   }
 })
